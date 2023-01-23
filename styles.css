@@ -19,25 +19,35 @@ display: flex;
 flex-flow: column nowrap;
 justify-content: space-evenly;
 align-items: center;
-height: 50%;
-width: 30%;
+height: 70%;
+width: 25%;
 background-color: dimgray;
+border-radius: 20px;
+padding-bottom: 25px;
+padding-top: 25px;
 }
 
 
 .displayPlace {
     width: 80%;
     height: 30%;
-    background-color: wheat;
+    background-color: aliceblue;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: 80px;
+   
 }
 
 
 .clearDeletePlace {
 display: flex;
 flex-flow: row nowrap;
-justify-content: space-evenly;
+justify-content: space-between;
 align-items: center;
 width: 80%;
+height: 10%;
 }
 
 
@@ -53,36 +63,96 @@ width: 80%;
 .severToDivide {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 80%;
+    height: 10%;
 }
 
 .fourToMultiply {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 80%;
+    height: 10%;
+    
 }
 
 .oneToSub {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 80%;
+    height: 10%;
 }
 
 
 .pointToPlus {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 80%;
+    height: 10%;
 }
 
 .calcButton {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    font-size: larger;
+    background-color: seashell;
+}
 
+.calcButton:hover {
+    transform: scale(1.1);
+    border-color: cornflowerblue;
+    box-shadow: 0 0 cornflowerblue;
+
+}
+
+
+.divButton {
+    height: -webkit-fill-available;
+    width: 20%;
+}
+
+
+.cleardivButton {
+    height: 100%;
+    width: 46.5%;
+
+}
+
+
+.deletedivButton {
+    height: 100%;
+    width: 46.5%;
+}
+
+.clearButton {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    font-size: larger;
+    background-color: crimson;
+}
+
+.clearButton:hover {
+    transform: scale(1.1);
+    border-color: darkgoldenrod;
+    box-shadow: 0 0 darkgoldenrod;
+}
+
+.deleteButton {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    font-size: larger;
+    background-color: red;
+}
+
+.deleteButton:hover {
+    transform: scale(1.1);
+    border-color: darkgoldenrod;
+    box-shadow: 0 0 darkgoldenrod;
 }
