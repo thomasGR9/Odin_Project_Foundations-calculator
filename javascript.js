@@ -1,3 +1,4 @@
+const zero = document.querySelector('#zero');
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
 const three = document.querySelector('#three');
@@ -7,6 +8,8 @@ const six = document.querySelector('#six');
 const seven = document.querySelector('#seven');
 const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
+const dot = document.querySelector('#dot');
+const equal = document.querySelector('#equal');
 const plus = document.querySelector('#plus');
 const sub = document.querySelector('#sub');
 const multi = document.querySelector('#multi');
@@ -15,7 +18,9 @@ const clear = document.querySelector('.clearButton');
 const delet = document.querySelector('.deleteButton');
 const displayContainer = document.querySelector('.displayPlace');
 
-
+let pickedNum1 = "";
+let pickedNum2 = "";
+let pickedOperator;
 
 function add(num1, num2) {
     let sum = num1 + num2;
@@ -73,8 +78,36 @@ function display(number) {
         else if (number == 'delete') {
             displayContainer.removeChild(displayContainer.firstChild);
         }
+        else if (number == '+') {
+            for (const nums of numbersInDisplay) {
+                pickedNum1 += document.getElementById('theDiv').innerHTML;
+                displayContainer.removeChild(displayContainer.firstChild);
+            }     
+                 console.log(pickedNum1);
+                 console.log(pickedNum2);
+                 console.log(pickedOperator);     
+                 return pickedNum1; 
+       }
+
+       else if (number == '=') {
+        for (const numss of numbersInDisplay) {
+            pickedNum2 += document.getElementById('theDiv').innerHTML;
+            displayContainer.removeChild(displayContainer.firstChild);
+        }   
+        let x1 = +pickedNum1;
+        let x2 = +pickedNum2;
+        let x3 = add(x1, x2);
+        const result = document.createElement('div');
+        result.textContent = x3;
+        displayContainer.insertBefore(result, displayContainer.firstChild);
+
+    }
+
+
+       
         else if (number != 'clear' || number != 'delete') {
             const content = document.createElement('div')
+            content.setAttribute('id', 'theDiv'); 
             content.textContent = number;
             displayContainer.insertBefore(content, displayContainer.firstChild);
     }}
@@ -82,9 +115,9 @@ function display(number) {
     else {
         return;
     }
-
-    
 }
+
+
 
 one.addEventListener('click', () => {
 return display('1');
@@ -141,3 +174,21 @@ nine.addEventListener('click', () => {
 delet.addEventListener('click', () => {
     return display('delete');
        })
+
+
+
+ dot.addEventListener('click', () => {
+    return display('.');
+    })
+
+
+
+
+plus.addEventListener('click', () => {
+    pickedOperator = '+';
+    return display('+');
+    })
+
+ equal.addEventListener('click', () => {
+     return display('=');
+        })
