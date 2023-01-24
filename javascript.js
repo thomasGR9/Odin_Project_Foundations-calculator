@@ -20,7 +20,9 @@ const displayContainer = document.querySelector('.displayPlace');
 
 let pickedNum1 = "";
 let pickedNum2 = "";
-let pickedOperator;
+let pickedOperator = "";
+let arr = [];
+let anotherArr = [];
 
 function add(num1, num2) {
     let sum = num1 + num2;
@@ -73,34 +75,68 @@ function display(number) {
     if (numberhere <= 12) {
         if (number =='clear') {
             while (displayContainer.firstChild) {
-                displayContainer.removeChild(displayContainer.firstChild);
-        }}
+                displayContainer.removeChild(displayContainer.firstChild);       
+        }
+             pickedNum1 = "";
+             pickedNum2 = "";
+             pickedOperator = "";
+             arr = [];
+             anotherArr = [];
+    }
         else if (number == 'delete') {
             displayContainer.removeChild(displayContainer.firstChild);
         }
-        else if (number == '+') {
+        else if (number == '+' || number == "-" || number == "*" || number == "/") {
             for (const nums of numbersInDisplay) {
-                pickedNum1 += document.getElementById('theDiv').innerHTML;
+                arr.push(document.getElementById('theDiv').innerHTML);
                 displayContainer.removeChild(displayContainer.firstChild);
             }     
-                 console.log(pickedNum1);
-                 console.log(pickedNum2);
-                 console.log(pickedOperator);     
+            for (let i = (arr.length-1); i >= 0; i--) {
+                pickedNum1 += arr[i];
+            }
+                     
                  return pickedNum1; 
        }
 
        else if (number == '=') {
         for (const numss of numbersInDisplay) {
-            pickedNum2 += document.getElementById('theDiv').innerHTML;
+            anotherArr.push(document.getElementById('theDiv').innerHTML);
             displayContainer.removeChild(displayContainer.firstChild);
         }   
+        for (let i = (anotherArr.length-1); i >= 0; i--) {
+            pickedNum2 += anotherArr[i];
+        }
+        console.log(arr);
+        console.log(anotherArr);
+                 console.log(pickedNum1);
+                 console.log(pickedNum2);
+                 console.log(pickedOperator); 
         let x1 = +pickedNum1;
         let x2 = +pickedNum2;
-        let x3 = add(x1, x2);
-        const result = document.createElement('div');
-        result.textContent = x3;
-        displayContainer.insertBefore(result, displayContainer.firstChild);
-
+        if (pickedOperator == "+") {
+            let x3 = add(x1, x2);
+            const result = document.createElement('div');
+            result.textContent = x3;
+            displayContainer.insertBefore(result, displayContainer.firstChild);
+        }
+        else if (pickedOperator == "-") {
+            let x3 = subtract(x1, x2);
+            const result = document.createElement('div');
+            result.textContent = x3;
+            displayContainer.insertBefore(result, displayContainer.firstChild);    
+        }
+        else if (pickedOperator == "*") {
+            let x3 = multiply(x1, x2);
+            const result = document.createElement('div');
+            result.textContent = x3;
+            displayContainer.insertBefore(result, displayContainer.firstChild);
+        }
+        else if (pickedOperator == "/") {
+            let x3 = divide(x1, x2);
+            const result = document.createElement('div');
+            result.textContent = x3;
+            displayContainer.insertBefore(result, displayContainer.firstChild);
+        }
     }
 
 
@@ -110,7 +146,8 @@ function display(number) {
             content.setAttribute('id', 'theDiv'); 
             content.textContent = number;
             displayContainer.insertBefore(content, displayContainer.firstChild);
-    }}
+    }
+    }
 
     else {
         return;
@@ -118,6 +155,9 @@ function display(number) {
 }
 
 
+zero.addEventListener('click', () => {
+    return display('0');
+    })
 
 one.addEventListener('click', () => {
 return display('1');
@@ -189,6 +229,22 @@ plus.addEventListener('click', () => {
     return display('+');
     })
 
+    sub.addEventListener('click', () => {
+        pickedOperator = '-';
+        return display('-');
+        })
+
+        multi.addEventListener('click', () => {
+            pickedOperator = '*';
+            return display('*');
+            })
+
+
+            divis.addEventListener('click', () => {
+                pickedOperator = '/';
+                return display('/');
+                })
+
  equal.addEventListener('click', () => {
      return display('=');
-        })
+        });
