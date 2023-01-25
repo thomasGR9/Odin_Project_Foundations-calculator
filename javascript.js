@@ -125,41 +125,54 @@ function display(number) {
         let x1 = +pickedNum1;
         let x2 = +pickedNum2;
         let x3;
+        let x4;
         if (pickedOperator == "+") {
              x3 = add(x1, x2);
+             x4 = x3;
             if (x3 > 999999999) {
                 x3 = "Too big";
             }
+            if (!(Number.isInteger(x3))) {
+                x4 = x3.toFixed(3);
+            }
             const result = document.createElement('div');
-            result.textContent = x3;
+            result.textContent = x4;
             downDisplay.insertBefore(result, downDisplay.firstChild);
         }
         else if (pickedOperator == "-") {
              x3 = subtract(x1, x2);
+             x4 = x3;
             if (x3 > 999999999) {
                 x3 = "Too big";
             }
+            if (!(Number.isInteger(x3))) {
+                x4 = x3.toFixed(3);
+            }
             const result = document.createElement('div');
-            result.textContent = x3;
+            result.textContent = x4;
             downDisplay.insertBefore(result, downDisplay.firstChild);    
         }
         else if (pickedOperator == "*") {
              x3 = multiply(x1, x2);
+             x4 = x3;
             if (x3 > 999999999) {
                 x3 = "Too big";
             }
+            if (!(Number.isInteger(x3))) {
+                x4 = x3.toFixed(3);
+            }
             const result = document.createElement('div');
-            result.textContent = x3;
+            result.textContent = x4;
             downDisplay.insertBefore(result, downDisplay.firstChild);
         }
         else if (pickedOperator == "/") {
              x3 = divide(x1, x2);
-            let x4 = x3;
+             x4 = x3;
             if (x4 > 999999999) {
                 x4 = "Too big";
             }
             if (!(Number.isInteger(x3))) {
-                x4 = x3.toFixed(5);
+                x4 = x3.toFixed(3);
             }
             const result = document.createElement('div');
             result.textContent = x4;
