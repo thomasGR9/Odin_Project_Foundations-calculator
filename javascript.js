@@ -26,6 +26,7 @@ let pickedOperator = "";
 let arr = [];
 let anotherArr = [];
 
+
 function add(num1, num2) {
     let sum = num1 + num2;
     console.log(sum);
@@ -74,11 +75,15 @@ function display(number) {
 
    
 
-    if (numberhere <= 8) {
+    if (numberhere < 10) {
         if (number =='clear') {
             while (downDisplay.firstChild) {
                 downDisplay.removeChild(downDisplay.firstChild);       
         }
+        while (upperDisplay.firstChild) {
+            upperDisplay.removeChild(upperDisplay.firstChild);       
+    }
+
              pickedNum1 = "";
              pickedNum2 = "";
              pickedOperator = "";
@@ -96,7 +101,11 @@ function display(number) {
             for (let i = (arr.length-1); i >= 0; i--) {
                 pickedNum1 += arr[i];
             }
-                     
+            const upperText = document.createElement('div');
+            upperText.textContent = pickedNum1 + pickedOperator;
+           
+            upperText.style.fontSize = '50px'
+            upperDisplay.insertBefore(upperText, upperDisplay.firstChild);     
                  return pickedNum1; 
        }
 
@@ -115,8 +124,9 @@ function display(number) {
                  console.log(pickedOperator); 
         let x1 = +pickedNum1;
         let x2 = +pickedNum2;
+        let x3;
         if (pickedOperator == "+") {
-            let x3 = add(x1, x2);
+             x3 = add(x1, x2);
             if (x3 > 999999999) {
                 x3 = "Too big";
             }
@@ -125,7 +135,7 @@ function display(number) {
             downDisplay.insertBefore(result, downDisplay.firstChild);
         }
         else if (pickedOperator == "-") {
-            let x3 = subtract(x1, x2);
+             x3 = subtract(x1, x2);
             if (x3 > 999999999) {
                 x3 = "Too big";
             }
@@ -134,7 +144,7 @@ function display(number) {
             downDisplay.insertBefore(result, downDisplay.firstChild);    
         }
         else if (pickedOperator == "*") {
-            let x3 = multiply(x1, x2);
+             x3 = multiply(x1, x2);
             if (x3 > 999999999) {
                 x3 = "Too big";
             }
@@ -143,7 +153,7 @@ function display(number) {
             downDisplay.insertBefore(result, downDisplay.firstChild);
         }
         else if (pickedOperator == "/") {
-            let x3 = divide(x1, x2);
+             x3 = divide(x1, x2);
             let x4 = x3;
             if (x4 > 999999999) {
                 x4 = "Too big";
@@ -155,6 +165,12 @@ function display(number) {
             result.textContent = x4;
             downDisplay.insertBefore(result, downDisplay.firstChild);
         }
+        const upperTextAgain = document.createElement('div');
+            upperTextAgain.textContent = `${pickedNum2} = `;
+            
+            upperTextAgain.style.fontSize = '50px'
+            upperDisplay.insertBefore(upperTextAgain, upperDisplay.firstChild);
+
     }
 
 
@@ -167,21 +183,40 @@ function display(number) {
     }
     }
 
-    else if (numberhere == 9) {
+    else if (numberhere == 10) {
         const content = document.createElement('div')
-        content.setAttribute('id', 'resultsPLace'); 
-        content.textContent = "Cant handle it,refresh";
+        content.setAttribute('class', 'upperDisplay'); 
+        content.style.fontSize = '50px'
+        content.textContent = "Too many digits :(";
         upperDisplay.insertBefore(content, upperDisplay.firstChild);
-        return;
+        
+        while (downDisplay.firstChild) {
+            downDisplay.removeChild(downDisplay.firstChild);       
+    }
+
+    const contentToo = document.createElement('div')
+        contentToo.setAttribute('class', 'upperDisplay'); 
+        contentToo.style.fontSize = '50px'
+        contentToo.textContent = "Please clear";
+        downDisplay.insertBefore(contentToo, downDisplay.firstChild);
+
+         pickedNum1 = "";
+         pickedNum2 = "";
+         pickedOperator = "";
+         arr = [];
+         anotherArr = [];
+        numberhere = 0;
     }
 }
 
 
 zero.addEventListener('click', () => {
+    
     return display('0');
     })
 
 one.addEventListener('click', () => {
+
 return display('1');
 })
 
