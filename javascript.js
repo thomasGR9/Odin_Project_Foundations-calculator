@@ -17,6 +17,8 @@ const divis = document.querySelector('#divis');
 const clear = document.querySelector('.clearButton');
 const delet = document.querySelector('.deleteButton');
 const displayContainer = document.querySelector('.displayPlace');
+const upperDisplay = document.querySelector('.upperDisplay');
+const downDisplay = document.querySelector('.bottomDisplay');
 
 let pickedNum1 = "";
 let pickedNum2 = "";
@@ -64,7 +66,7 @@ function operate(num1, num2, operator) {
 }
 
 function display(number) {
-    const numbersInDisplay = displayContainer.querySelectorAll('div');
+    const numbersInDisplay = downDisplay.querySelectorAll('div');
     let numberhere = 1;
     for (const item of numbersInDisplay) {
         numberhere += 1;
@@ -72,10 +74,10 @@ function display(number) {
 
    
 
-    if (numberhere <= 12) {
+    if (numberhere <= 8) {
         if (number =='clear') {
-            while (displayContainer.firstChild) {
-                displayContainer.removeChild(displayContainer.firstChild);       
+            while (downDisplay.firstChild) {
+                downDisplay.removeChild(downDisplay.firstChild);       
         }
              pickedNum1 = "";
              pickedNum2 = "";
@@ -84,12 +86,12 @@ function display(number) {
              anotherArr = [];
     }
         else if (number == 'delete') {
-            displayContainer.removeChild(displayContainer.firstChild);
+            downDisplay.removeChild(downDisplay.firstChild);
         }
         else if (number == '+' || number == "-" || number == "*" || number == "/") {
             for (const nums of numbersInDisplay) {
                 arr.push(document.getElementById('theDiv').innerHTML);
-                displayContainer.removeChild(displayContainer.firstChild);
+                downDisplay.removeChild(downDisplay.firstChild);
             }     
             for (let i = (arr.length-1); i >= 0; i--) {
                 pickedNum1 += arr[i];
@@ -101,7 +103,7 @@ function display(number) {
        else if (number == '=') {
         for (const numss of numbersInDisplay) {
             anotherArr.push(document.getElementById('theDiv').innerHTML);
-            displayContainer.removeChild(displayContainer.firstChild);
+            downDisplay.removeChild(downDisplay.firstChild);
         }   
         for (let i = (anotherArr.length-1); i >= 0; i--) {
             pickedNum2 += anotherArr[i];
@@ -115,27 +117,43 @@ function display(number) {
         let x2 = +pickedNum2;
         if (pickedOperator == "+") {
             let x3 = add(x1, x2);
+            if (x3 > 999999999) {
+                x3 = "Too big";
+            }
             const result = document.createElement('div');
             result.textContent = x3;
-            displayContainer.insertBefore(result, displayContainer.firstChild);
+            downDisplay.insertBefore(result, downDisplay.firstChild);
         }
         else if (pickedOperator == "-") {
             let x3 = subtract(x1, x2);
+            if (x3 > 999999999) {
+                x3 = "Too big";
+            }
             const result = document.createElement('div');
             result.textContent = x3;
-            displayContainer.insertBefore(result, displayContainer.firstChild);    
+            downDisplay.insertBefore(result, downDisplay.firstChild);    
         }
         else if (pickedOperator == "*") {
             let x3 = multiply(x1, x2);
+            if (x3 > 999999999) {
+                x3 = "Too big";
+            }
             const result = document.createElement('div');
             result.textContent = x3;
-            displayContainer.insertBefore(result, displayContainer.firstChild);
+            downDisplay.insertBefore(result, downDisplay.firstChild);
         }
         else if (pickedOperator == "/") {
             let x3 = divide(x1, x2);
+            let x4 = x3;
+            if (x4 > 999999999) {
+                x4 = "Too big";
+            }
+            if (!(Number.isInteger(x3))) {
+                x4 = x3.toFixed(5);
+            }
             const result = document.createElement('div');
-            result.textContent = x3;
-            displayContainer.insertBefore(result, displayContainer.firstChild);
+            result.textContent = x4;
+            downDisplay.insertBefore(result, downDisplay.firstChild);
         }
     }
 
@@ -145,11 +163,15 @@ function display(number) {
             const content = document.createElement('div')
             content.setAttribute('id', 'theDiv'); 
             content.textContent = number;
-            displayContainer.insertBefore(content, displayContainer.firstChild);
+            downDisplay.insertBefore(content, downDisplay.firstChild);
     }
     }
 
-    else {
+    else if (numberhere == 9) {
+        const content = document.createElement('div')
+        content.setAttribute('id', 'resultsPLace'); 
+        content.textContent = "Cant handle it,refresh";
+        upperDisplay.insertBefore(content, upperDisplay.firstChild);
         return;
     }
 }

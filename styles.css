@@ -33,11 +33,45 @@ padding-top: 25px;
     height: 30%;
     background-color: aliceblue;
     display: flex;
-    flex-flow: row-reverse wrap;
+    flex-flow: column nowrap;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: center;
     font-size: 80px;
    
+}
+
+.upperDisplay {
+    background-color: aliceblue;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 80px;
+    height: 50%;
+    width: 100%;
+}
+
+.bottomDisplay {
+    background-color: aliceblue;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 80px;
+    height: 50%;
+    width: 100%;
+}
+
+#resultsPLace {
+    align-self: flex-start;
+    width: 80%;
+    height: 45%;
+    background-color: aliceblue;
+    margin-top: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-flow: row-reverse wrap;
+    font-size: 50px;
 }
 
 
