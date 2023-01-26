@@ -318,3 +318,65 @@ plus.addEventListener('click', () => {
  equal.addEventListener('click', () => {
      return display('=');
         });
+
+
+        document.addEventListener('keydown', function(event) {
+            if(event.keyCode == 97 || event.keyCode == 49) {
+                return display('1');
+            }
+            else if(event.keyCode == 98 || event.keyCode == 50) {
+                return display('2');
+            }
+            else if(event.keyCode == 99 || event.keyCode == 51) {
+                return display('3');
+            }
+            else if(event.keyCode == 100 || event.keyCode == 52) {
+                return display('4');
+            }
+            else if(event.keyCode == 101 || event.keyCode == 53) {
+                return display('5');
+            }
+            else if(event.keyCode == 102 || event.keyCode == 54) {
+                return display('6');
+            }
+            else if(event.keyCode == 103 || event.keyCode == 55) {
+                return display('7');
+            }
+            else if(event.keyCode == 104 || event.keyCode == 56) {
+                return display('8');
+            }
+            else if(event.keyCode == 105 || event.keyCode == 57) {
+                return display('9');
+            }
+            else if(event.keyCode == 8) {
+                return display('delete');
+            }
+            else if(event.keyCode == 8) {
+                return display('delete');
+            }
+            else if(event.keyCode == 187) {
+                return display('=');
+            }
+            else if(event.keyCode == 108 || event.keyCode == 190) {
+                return display('.');
+            }
+            else if(event.keyCode == 96 || event.keyCode == 48) {
+                return display('0');
+            }
+            else if(event.keyCode == 111) {
+                pickedOperator = '/';
+                return display('/');
+            }
+            else if(event.keyCode == 106) {
+                pickedOperator = '*';
+                return display('*');
+            }
+            else if(event.keyCode == 109) {
+                pickedOperator = '-';
+                return display('-');
+            }
+            else if(event.keyCode == 107) {
+                pickedOperator = '+';
+                return display('+');
+            }
+        })
