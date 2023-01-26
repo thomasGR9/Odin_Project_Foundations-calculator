@@ -27,6 +27,7 @@ let arr = [];
 let anotherArr = [];
 
 
+
 function add(num1, num2) {
     let sum = num1 + num2;
     console.log(sum);
@@ -126,11 +127,13 @@ function display(number) {
         let x2 = +pickedNum2;
         let x3;
         let x4;
+   
+        
         if (pickedOperator == "+") {
              x3 = add(x1, x2);
              x4 = x3;
-            if (x3 > 999999999) {
-                x3 = "Too big";
+            if (x4 > 999999999) {
+                x4 = "Too big";
             }
             if (!(Number.isInteger(x3))) {
                 x4 = x3.toFixed(3);
@@ -142,8 +145,8 @@ function display(number) {
         else if (pickedOperator == "-") {
              x3 = subtract(x1, x2);
              x4 = x3;
-            if (x3 > 999999999) {
-                x3 = "Too big";
+            if (x4 > 999999999) {
+                x4 = "Too big";
             }
             if (!(Number.isInteger(x3))) {
                 x4 = x3.toFixed(3);
@@ -155,8 +158,9 @@ function display(number) {
         else if (pickedOperator == "*") {
              x3 = multiply(x1, x2);
              x4 = x3;
-            if (x3 > 999999999) {
-                x3 = "Too big";
+            if (x4 > 999999999) {
+                x4 = "Too big";
+                
             }
             if (!(Number.isInteger(x3))) {
                 x4 = x3.toFixed(3);
@@ -178,11 +182,21 @@ function display(number) {
             result.textContent = x4;
             downDisplay.insertBefore(result, downDisplay.firstChild);
         }
+        else {
+            const upperTextAgain2 = document.createElement('div');
+            upperTextAgain2.textContent = "Pick an oparator";
+            upperTextAgain2.style.fontSize = '50px'
+            upperDisplay.insertBefore(upperTextAgain2, upperDisplay.firstChild);
+            return;
+        }
+       
         const upperTextAgain = document.createElement('div');
+        if (x4 != "Too big") {
             upperTextAgain.textContent = `${pickedNum2} = `;
             
             upperTextAgain.style.fontSize = '50px'
             upperDisplay.insertBefore(upperTextAgain, upperDisplay.firstChild);
+        }
 
     }
 
