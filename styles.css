@@ -45,22 +45,27 @@ padding-top: 25px;
     display: flex;
     flex-flow: row-reverse nowrap;
     justify-content: flex-start;
-    align-items: center;
+    align-items: baseline;
     font-size: 80px;
     height: 50%;
     width: 100%;
     
+    overflow-y: scroll;
+  
 }
 
 .bottomDisplay {
     background-color: aliceblue;
     display: flex;
-    flex-flow: row-reverse nowrap;
+    flex-flow: row-reverse wrap;
     justify-content: flex-start;
     align-items: center;
     font-size: 80px;
-    height: 50%;
+    height: fit-content;
     width: 100%;
+    flex-basis: 50%;
+    overflow: auto;
+    
     
 }
 

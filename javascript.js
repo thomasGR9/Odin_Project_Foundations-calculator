@@ -76,7 +76,7 @@ function display(number) {
 
    
 
-    if (numberhere < 11) {
+  
         if (number =='clear') {
             while (downDisplay.firstChild) {
                 downDisplay.removeChild(downDisplay.firstChild);       
@@ -185,6 +185,7 @@ function display(number) {
             }
             const result = document.createElement('div');
             result.textContent = x4;
+            
             downDisplay.insertBefore(result, downDisplay.firstChild);
         }
         else if (pickedOperator == "/") {
@@ -210,7 +211,7 @@ function display(number) {
        
         const upperTextAgain = document.createElement('div');
         if (x4 != "Too big") {
-            upperTextAgain.textContent = `${pickedNum2} = `;
+            upperTextAgain.textContent = `${pickedNum2}= `;
             
             upperTextAgain.style.fontSize = '50px'
             upperDisplay.insertBefore(upperTextAgain, upperDisplay.firstChild);
@@ -226,32 +227,9 @@ function display(number) {
             content.textContent = number;
             downDisplay.insertBefore(content, downDisplay.firstChild);
     }
-    }
+    
 
-    else if (numberhere == 11) {
-        const content = document.createElement('div')
-        content.setAttribute('class', 'upperDisplay'); 
-        content.style.fontSize = '50px'
-        content.textContent = "Too many digits :(";
-        upperDisplay.insertBefore(content, upperDisplay.firstChild);
-        
-        while (downDisplay.firstChild) {
-            downDisplay.removeChild(downDisplay.firstChild);       
-    }
-
-    const contentToo = document.createElement('div')
-        contentToo.setAttribute('class', 'upperDisplay'); 
-        contentToo.style.fontSize = '50px'
-        contentToo.textContent = "Please clear";
-        downDisplay.insertBefore(contentToo, downDisplay.firstChild);
-
-         pickedNum1 = "";
-         pickedNum2 = "";
-         pickedOperator = "";
-         arr = [];
-         anotherArr = [];
-        numberhere = 0;
-    }
+   
 }
 
 
