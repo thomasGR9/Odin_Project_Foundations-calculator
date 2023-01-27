@@ -98,15 +98,34 @@ function display(number) {
             for (const nums of numbersInDisplay) {
                 arr.push(document.getElementById('theDiv').innerHTML);
                 downDisplay.removeChild(downDisplay.firstChild);
-            }     
-            for (let i = (arr.length-1); i >= 0; i--) {
-                pickedNum1 += arr[i];
-            }
+            }  
+            let sumAnother = "";   
+            let previousOper;
+                if (!(pickedNum1 == '')) {
+                    previousOper = document.getElementById('operator').innerHTML;
+                    pickedNum1 = +pickedNum1;
+                    for (let i = (arr.length-1); i >= 0; i--) {
+                        sumAnother += arr[i];
+                    }
+                     sumAnother = +sumAnother;
+                    pickedNum1 = operate(pickedNum1,sumAnother,previousOper);
+                }
+                else if (pickedNum1 == '') {
+                    for (let i = (arr.length-1); i >= 0; i--) {
+                        pickedNum1 += arr[i];
+                    }
+                  sumAnother = pickedNum1;  
+                }
             const upperText = document.createElement('div');
-            upperText.textContent = pickedNum1 + pickedOperator;
-           
+            const upperTextOperator = document.createElement('div');
+            upperText.textContent = sumAnother;
+            upperTextOperator.textContent = pickedOperator;
+            upperTextOperator.setAttribute('id', 'operator');
             upperText.style.fontSize = '50px'
-            upperDisplay.insertBefore(upperText, upperDisplay.firstChild);     
+            upperTextOperator.style.fontSize = '50px'
+            upperDisplay.insertBefore(upperText, upperDisplay.firstChild);   
+            upperDisplay.insertBefore(upperTextOperator, upperDisplay.firstChild); 
+            arr = []; 
                  return pickedNum1; 
        }
 
