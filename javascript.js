@@ -76,7 +76,7 @@ function display(number) {
 
    
 
-    if (numberhere < 10) {
+    if (numberhere < 11) {
         if (number =='clear') {
             while (downDisplay.firstChild) {
                 downDisplay.removeChild(downDisplay.firstChild);       
@@ -152,7 +152,7 @@ function display(number) {
              x3 = add(x1, x2);
              x4 = x3;
             if (x4 > 999999999) {
-                x4 = "Too big";
+                x4 = x4.toExponential(3);
             }
             if (!(Number.isInteger(x3))) {
                 x4 = x3.toFixed(3);
@@ -165,7 +165,7 @@ function display(number) {
              x3 = subtract(x1, x2);
              x4 = x3;
             if (x4 > 999999999) {
-                x4 = "Too big";
+                x4 = x4.toExponential(3);
             }
             if (!(Number.isInteger(x3))) {
                 x4 = x3.toFixed(3);
@@ -178,8 +178,7 @@ function display(number) {
              x3 = multiply(x1, x2);
              x4 = x3;
             if (x4 > 999999999) {
-                x4 = "Too big";
-                
+                x4 = x4.toExponential(3);
             }
             if (!(Number.isInteger(x3))) {
                 x4 = x3.toFixed(3);
@@ -192,7 +191,7 @@ function display(number) {
              x3 = divide(x1, x2);
              x4 = x3;
             if (x4 > 999999999) {
-                x4 = "Too big";
+                x4 = x4.toExponential(3);
             }
             if (!(Number.isInteger(x3))) {
                 x4 = x3.toFixed(3);
@@ -229,7 +228,7 @@ function display(number) {
     }
     }
 
-    else if (numberhere == 10) {
+    else if (numberhere == 11) {
         const content = document.createElement('div')
         content.setAttribute('class', 'upperDisplay'); 
         content.style.fontSize = '50px'
